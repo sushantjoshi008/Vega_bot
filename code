@@ -1,0 +1,108 @@
+from discord.ext import commands
+bot = commands.Bot(command_prefix = '@')
+    
+@bot.event
+async def on_message(message):
+    if message.author== bot.user:
+        return
+    if message.content== "maggie":
+        await message.add_reaction('🍜')
+    if message.content== "Maggie":
+        await message.add_reaction('🍜')
+    if message.content== "pasta":
+        await message.add_reaction('🍜')
+    if message.content== "Pasta":
+        await message.add_reaction('🍜')
+    if message.content== "noodle":
+        await message.add_reaction('🍜')
+    if message.content== "Noodles":
+        await message.add_reaction('🍜')
+    if message.content== "noodles":
+        await message.add_reaction('🍜')
+    if message.content== "Noodle":
+        await message.add_reaction('🍜')
+    
+    user = message.author
+    if message.content == "space":   
+        member = message.author
+        role = discord.utils.get(message.guild.roles, name='Space Enthusiast')
+        await user.add_roles(role)
+        await message.add_reaction('🚀')
+    if message.content == "planet":   
+        member = message.author
+        role = discord.utils.get(message.guild.roles, name='Space Enthusiast')
+        await user.add_roles(role)
+        await message.add_reaction('🚀')
+    await bot.process_commands(message)
+    
+@bot.command(name= 'pasta')
+async def hello(ctx,):
+    await ctx.message.add_reaction('🍜')
+@bot.command(name= 'Pasta')
+async def hello(ctx,):
+    await ctx.message.add_reaction('🍜')
+@bot.command(name= 'Noodle')
+async def hello(ctx,):
+    await ctx.message.add_reaction('🍜')
+@bot.command(name= 'noodle')
+async def hello(ctx,):
+    await ctx.message.add_reaction('🍜')
+@bot.command(name= 'maggie')
+async def hello(ctx,):
+    await ctx.message.add_reaction('🍜')
+@bot.command(name= 'Maggie')
+async def hello(ctx,):
+    await ctx.message.add_reaction('🍜')
+    
+from datetime import datetime
+from discord import Embed
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+
+@bot.event 
+async def on_ready():
+    print(bot.user.name,'is finally connected for time')
+
+@bot.command(name = 'time')
+async def time(ctx):
+    await ctx.send('The time is: ' + current_time+ ' IST')
+    await ctx.send(' Time never stops unless you are travelling at the speed of light')
+
+@bot.command(name = 'add')
+async def add(ctx,arg1='',arg2=''):
+    print(arg1)
+    print(arg2)
+    answer = int(arg1)+int(arg2)
+    print(answer)
+    embed = Embed(title="Addition", description= '\u200b', color=0x00b8e2)
+    embed.add_field(name =arg1 + '+' + arg2, value = answer,inline=False)
+    embed.set_footer(text='Team Vega')
+    await ctx.send(embed=embed)
+
+    
+@bot.command(name = 'Planet')
+async def planet(ctx,arg1=''):
+    print(arg1)
+    if arg1== '1':
+        await ctx.send('The first planet from Sun is Mercury. It has the biggest crater in the entire Solar System')
+    elif arg1=='2':
+        await ctx.send('The second planet from Sun is Venus. It has a thick cloud cover composed of sulphuric acid and constant rivers of lava are present so it is a literal hell')
+    elif arg1=='3':
+        await ctx.send('The third planet from Sun is Earth. You live here you should know about it')
+    elif arg1=='4':
+        await ctx.send('The fourth planet from Sun is Mars. Also known as the red Planet because its surface is covered with iron dust or what you know as rust')
+    elif arg1== '5':
+        await ctx.send('The fifth planet from Sun is Jupiter. It is the biggest planet in the Solar System and the Great Red Spot is the biggest storm on it which is bigger than the diameter of Earth')
+    elif arg1== '6':
+        await ctx.send('The Sixth planet from Sun is Saturn. It has such beautiful rings around it and it also has the most number of moons in the Solar System, the spot which was once filled by Jupiter')
+    elif arg1== '7':
+        await ctx.send('The Seventh planet from sun is Uranus. It is rarer than water so it can float on water if you can make a pool large enough and 63 Earths can fit in Uranus and i am serious')
+    elif arg1== '8':
+        await ctx.send('The eight and last planet from the sun is Neptune. The coldest of them all and the farthest with constant storms brewing, it is like a windy freezer')
+    elif arg1=='9':
+        await ctx.send(" it's sad that you still consider pluto a planet, it has been 15 years since 2006 please wake up!!. oh and if you were expecting to see the speculated planet 9 here then sorry! but it'll be updated once it is discovered 😊")
+    else:
+        await ctx.send('Are you high bro? there are only 8 planets in the Solar System till now')
+    
+        
+bot.run(Token)
